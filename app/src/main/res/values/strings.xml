@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">CST338_TODOList</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="todo_list">TODO List</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="mainSubmitButton">Submit</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="delete_user_button">Delete User</string>
+    <string name="welcome">Welcome</string>
+    <string name="login">LOGIN</string>
+    <string name="add">ADD</string>
+    <string name="remove">REMOVE</string>
+</resources>
