@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -91,5 +93,35 @@ public class MainActivity extends AppCompatActivity{
 
         Intent intent = LoginActivity.intentFactory(this);
         startActivity(intent);
+    }
+
+    private void logoutUser(){
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+
+        alertBuilder.setMessage("LOGOUT?");
+
+        alertBuilder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                clearUserFromIntent();
+                clearUserFromPref();
+            }
+        });
+
+        alertBuilder.setNegativeButton("no", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        alertBuilder.create().show();
+    }
+
+    private void clearUserFromIntent() {
+    }
+
+    private void clearUserFromPref() {
+
     }
 }

@@ -10,4 +10,5 @@
     <string name="login">LOGIN</string>
     <string name="add">ADD</string>
     <string name="remove">REMOVE</string>
+    <string name="log_out">LOG OUT</string>
 </resources>
