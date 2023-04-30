@@ -12,11 +12,21 @@ public class User {
     private Integer userId;
     private String username;
     private String password;
+    private String admin;
 
 
-    public User(String username, String password) {
+    public User(String username, String password, String admin) {
         this.username = username;
         this.password = password;
+        this.admin = admin;
+    }
+
+    public String getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(String admin) {
+        this.admin = admin;
     }
 
     public Integer getUserId() {

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddTODO">
+
+    <TextView
+        android:id="@+id/addTodo"
+        android:layout_marginTop="16dp"
+        android:textSize="32sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/todoTitle"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:hint="@string/title_of_todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addTodo" />
+
+    <EditText
+        android:id="@+id/todoDescription"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:hint="@string/description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todoTitle" />
+
+
+    <EditText
+        android:id="@+id/todoDate"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:hint="@string/date_of_todo"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todoDescription"
+
+        />
+
+    <EditText
+        android:id="@+id/todoTime"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:hint="@string/time_to_do_todo"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todoDate"
+
+        />
+
+    <Button
+        android:id="@+id/mainAddButton"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todoTime"
+        android:text="@string/add_todo"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

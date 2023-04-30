@@ -3,21 +3,18 @@ package com.example.cst338_todolist;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.cst338_todolist.DB.AppDataBase;
 import com.example.cst338_todolist.DB.TODOListDAO;
-import com.example.cst338_todolist.DB.TODOListDAO_Impl;
 import com.example.cst338_todolist.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
@@ -64,6 +61,14 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = CreateAnAccount.intentFactory(getApplicationContext());
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -87,41 +92,43 @@ public class MainActivity extends AppCompatActivity{
 
         users = TODOListDAO.getAllUsers();
         if(users.size() <= 0){
-            User predefinedUser = new User("seche", "seche123");
+            User predefinedUser = new User("seche", "seche123", "no");
+            User predefinedAdmin = new User("admin", "s3cr3t", "yes");
             TODOListDAO.insert(predefinedUser);
+            TODOListDAO.insert(predefinedAdmin);
         }
 
         Intent intent = LoginActivity.intentFactory(this);
         startActivity(intent);
     }
 
-    private void logoutUser(){
-        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-
-        alertBuilder.setMessage("LOGOUT?");
-
-        alertBuilder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                clearUserFromIntent();
-                clearUserFromPref();
-            }
-        });
-
-        alertBuilder.setNegativeButton("no", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
-
-        alertBuilder.create().show();
-    }
-
-    private void clearUserFromIntent() {
-    }
-
-    private void clearUserFromPref() {
-
-    }
+//    private void logoutUser(){
+//        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+//
+//        alertBuilder.setMessage("LOGOUT?");
+//
+//        alertBuilder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                clearUserFromIntent();
+//                clearUserFromPref();
+//            }
+//        });
+//
+//        alertBuilder.setNegativeButton("no", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//
+//            }
+//        });
+//
+//        alertBuilder.create().show();
+//    }
+//
+//    private void clearUserFromIntent() {
+//    }
+//
+//    private void clearUserFromPref() {
+//
+//    }
 }
