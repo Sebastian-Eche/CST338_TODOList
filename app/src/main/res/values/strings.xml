@@ -22,4 +22,12 @@
     <string name="description">Description</string>
     <string name="remove_todo">REMOVE TODO</string>
     <string name="remove_by_title">Remove by Title</string>
+    <string name="remove_todo_ALLCAPS">REMOVE TODO</string>
+    <string name="remove_user">REMOVE USER</string>
+    <string name="check_database">CHECK DATABASE</string>
+    <string name="delete_user">DELETE USER</string>
+    <string name="user_list">USER LIST</string>
+    <string name="remove_by_username">REMOVE BY USERNAME</string>
+    <string name="calendar">CALENDAR</string>
+    <string name="go_back">GO BACK</string>
 </resources>

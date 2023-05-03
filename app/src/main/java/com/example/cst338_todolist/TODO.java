@@ -21,6 +21,11 @@ public class TODO {
         this.todoTime = todoTime;
     }
 
+    @Override
+    public String toString() {
+        return "TODO: " + todoTitle + "\n";
+    }
+
     public Integer getItemId() {
         return itemId;
     }

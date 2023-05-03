@@ -21,6 +21,11 @@ public class User {
         this.admin = admin;
     }
 
+    @Override
+    public String toString() {
+        return "User: " + username + " isAdmin? "+ admin +"\n";
+    }
+
     public String getAdmin() {
         return admin;
     }

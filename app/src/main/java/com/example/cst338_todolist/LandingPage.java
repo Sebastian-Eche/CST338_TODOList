@@ -28,7 +28,9 @@ public class LandingPage extends AppCompatActivity {
 
     Button addTodo;
     Button removeTodo;
+    Button removeUser;
     Button logout;
+    Button calendar;
     private static final String USER_ID_KEY = "com.example.cst338_todolist.userIdKey";
     TODOListDAO TODOListDAO;
 
@@ -64,7 +66,9 @@ public class LandingPage extends AppCompatActivity {
         logout = binding.logoutBTN;
         welcome = binding.welcomeTitle;
         addTodo = binding.addBTN;
+        removeUser = binding.removeUserBTN;
         removeTodo = binding.removeBTN;
+        calendar = binding.calendar;
 
         if(user.getAdmin().equals("yes")) {
             welcome.setText("Welcome " + user.getUsername() + "\n" + "ADMIN SCREEN");
@@ -72,6 +76,7 @@ public class LandingPage extends AppCompatActivity {
         }else{
             welcome.setText("Welcome " + user.getUsername() + "\n" + "USER SCREEN ");
             removeTodo.setVisibility(View.INVISIBLE);
+            removeUser.setVisibility(View.INVISIBLE);
         }
 
         logout.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +93,31 @@ public class LandingPage extends AppCompatActivity {
                startActivity(intent);
             }
         });
+
+        removeTodo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = RemoveTODO.intentFactory(getApplicationContext(), userID);
+                startActivity(intent);
+            }
+        });
+
+        removeUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = RemoveUser.intentFactory(getApplicationContext(), userID);
+                startActivity(intent);
+            }
+        });
+
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = Calendar.intentFactory(getApplicationContext(), userID);
+                startActivity(intent);
+            }
+        });
+
     }
 
 

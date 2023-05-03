@@ -16,97 +16,82 @@ import android.widget.Toast;
 
 import com.example.cst338_todolist.DB.AppDataBase;
 import com.example.cst338_todolist.DB.TODOListDAO;
-import com.example.cst338_todolist.databinding.ActivityLandingPageBinding;
 import com.example.cst338_todolist.databinding.ActivityRemoveTodoBinding;
+import com.example.cst338_todolist.databinding.ActivityRemoveUserBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class RemoveTODO extends AppCompatActivity {
+public class RemoveUser extends AppCompatActivity {
 
     private static final String PREFERENCE_KEY = "com.example.cst338_todolist.PREFERENCE_KEY";
     private SharedPreferences preferences = null;
     private static final String USER_ID_KEY = "com.example.cst338_todolist.userIdKey";
     private int userID = -1;
-    EditText removeByTitle;
-    TextView todoList;
-    TextView removeTODOTitle;
-    Button removeTODOBTN;
 
-    ActivityRemoveTodoBinding binding;
+    TextView removeUserTitle;
+    TextView ListofUsers;
+    EditText removeUserByUsername;
+    Button deleteUser;
 
-    String removeByTitleText;
-
-    List<TODO> TODOList;
-
+    String removeUserByUsernameText;
+    List<User> userList;
+    ActivityRemoveUserBinding binding;
     TODOListDAO TODOListDAO;
 
     User user;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_remove_todo);
+        setContentView(R.layout.activity_remove_user);
 
         TODOListDAO = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DATABASE_NAME).allowMainThreadQueries().build().TODOListDAO();
 
-        binding = ActivityRemoveTodoBinding.inflate(getLayoutInflater());
+        user = TODOListDAO.getUserByUserID(userID);
+
+        binding = ActivityRemoveUserBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
         checkForUser();
         addUserToPreference(userID);
 
-
-        user = TODOListDAO.getUserByUserID(userID);
-
-
-        removeByTitle = binding.removeTitle;
-        removeTODOTitle = binding.removeTodoTitle;
-        removeTODOBTN = binding.removeButton;
-        todoList = binding.todoList;
+        removeUserTitle = binding.removeUserTitle;
+        ListofUsers = binding.userList;
+        removeUserByUsername = binding.removeUsername;
+        deleteUser = binding.removeUserByUsernameBTN;
 
 
-        todoList.setMovementMethod(new ScrollingMovementMethod());
+        ListofUsers.setMovementMethod(new ScrollingMovementMethod());
         showTodoList();
 
-
-        removeTODOBTN.setOnClickListener(new View.OnClickListener() {
+        deleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                removeTodo();
+                removeUser();
             }
         });
+
 
     }
 
     public static Intent intentFactory(Context context, int userId) {
-        Intent intent = new Intent(context, RemoveTODO.class);
+        Intent intent = new Intent(context, RemoveUser.class);
         intent.putExtra(USER_ID_KEY, userId);
         return intent;
     }
 
-    private void showTodoList(){
-        StringBuilder sb = new StringBuilder();
-        TODOList = TODOListDAO.getAllTODOs();
-        if(!TODOList.isEmpty()){
-            for(int i = 0; i < TODOList.size(); i++){
-                TODO todo = TODOList.get(i);
-                sb.append(todo.toString());
-            }
-            todoList.setText(sb.toString());
-        }
-    }
-
-    private void removeTodo(){
-        removeByTitleText = removeByTitle.getText().toString();
-        TODO todo = TODOListDAO.getTODObyTitle(removeByTitleText);
-        TODOListDAO.delete(todo);
-        Toast.makeText(getApplicationContext(), "TODO: " + todo.getTodoTitle() + " SUCCESSFULLY REMOVED", Toast.LENGTH_SHORT);
+    private void removeUser(){
+        removeUserByUsernameText = removeUserByUsername.getText().toString();
+        User user = TODOListDAO.getUserByUsername(removeUserByUsernameText);
+        TODOListDAO.delete(user);
+        Toast.makeText(getApplicationContext(), "TODO: " + user.getUsername()  + " SUCCESSFULLY REMOVED", Toast.LENGTH_SHORT);
         Intent intent = LandingPage.intentFactory(getApplicationContext(), userID);
         startActivity(intent);
     }
+
 
     private void addUserToPreference(int userID) {
         if(preferences == null){
@@ -141,4 +126,15 @@ public class RemoveTODO extends AppCompatActivity {
         }
     }
 
+    private void showTodoList(){
+        StringBuilder sb = new StringBuilder();
+        userList = TODOListDAO.getAllUsers();
+        if(!userList.isEmpty()){
+            for(int i = 0; i < userList.size(); i++){
+                User forUser = userList.get(i);
+                sb.append(forUser.toString());
+            }
+            ListofUsers.setText(sb.toString());
+        }
+    }
 }
