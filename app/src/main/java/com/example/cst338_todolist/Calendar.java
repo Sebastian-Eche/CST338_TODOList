@@ -82,7 +82,11 @@ public class Calendar extends AppCompatActivity {
 
     private void showTodoList(){
         StringBuilder sb = new StringBuilder();
-        TODOList = TODOListDAO.getAllTODOs();
+        if(user.getAdmin().equals("no")){
+            TODOList = TODOListDAO.getUserTODOItems(userID);
+        }else{
+            TODOList = TODOListDAO.getAllTODOs();
+        }
         if(!TODOList.isEmpty()){
             for(int i = 0; i < TODOList.size(); i++){
                 TODO todo = TODOList.get(i);

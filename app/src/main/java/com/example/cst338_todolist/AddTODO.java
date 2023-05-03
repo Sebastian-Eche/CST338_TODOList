@@ -90,7 +90,7 @@ public class AddTODO extends AppCompatActivity {
         addTitleText = addTitle.getText().toString();
         addDateText = addDate.getText().toString();
         TODO newTodo;
-        newTodo = new TODO(addTitleText, addDescriptionText, addDateText, addTimeText);
+        newTodo = new TODO(addTitleText, addDescriptionText, addDateText, addTimeText, userID);
         TODOListDAO.insert(newTodo);
         Toast.makeText(getApplicationContext(), addTitleText + " ADDED TO TODO LIST", Toast.LENGTH_SHORT).show();
         Toast.makeText(getApplicationContext(), "USERID: " + userID, Toast.LENGTH_LONG).show();

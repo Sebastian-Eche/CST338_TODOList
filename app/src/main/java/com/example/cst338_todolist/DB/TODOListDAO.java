@@ -32,6 +32,10 @@ public interface TODOListDAO {
     @Query("SELECT * FROM " + AppDataBase.LOGIN_TABLE + " WHERE username = :username")
     User getUserByUsername(String username);
 
+    @Query("SELECT * FROM todo_table JOIN login_table ON login_table.userId = todo_table.todoID WHERE todoID  = :userID ")
+    List<TODO> getUserTODOItems(Integer userID);
+
+
     @Insert
     void insert(TODO... todos);
 

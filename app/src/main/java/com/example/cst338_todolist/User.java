@@ -1,6 +1,7 @@
 package com.example.cst338_todolist;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import com.example.cst338_todolist.DB.AppDataBase;
