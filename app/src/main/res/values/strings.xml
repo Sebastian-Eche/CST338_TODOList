@@ -30,4 +30,7 @@
     <string name="remove_by_username">REMOVE BY USERNAME</string>
     <string name="calendar">CALENDAR</string>
     <string name="go_back">GO BACK</string>
+    <string name="calendar_items_size">Calendar Items Size</string>
+    <string name="todo_list_CAPS">TODO LIST</string>
+    <string name="check_todos">Check TODOs</string>
 </resources>
