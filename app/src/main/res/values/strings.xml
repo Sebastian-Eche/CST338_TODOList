@@ -33,4 +33,6 @@
     <string name="calendar_items_size">Calendar Items Size</string>
     <string name="todo_list_CAPS">TODO LIST</string>
     <string name="check_todos">Check TODOs</string>
+    <string name="taskmate">TaskMate</string>
+    <string name="task_mate">Task Mate</string>
 </resources>
