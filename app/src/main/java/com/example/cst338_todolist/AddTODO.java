@@ -45,6 +45,8 @@ public class AddTODO extends AppCompatActivity {
 
     TODO todo;
 
+    List<CalendarItems> calendarItemsList;
+
     ActivityAddTodoBinding binding;
 
     @Override
@@ -89,8 +91,9 @@ public class AddTODO extends AppCompatActivity {
         addDescriptionText = addDescription.getText().toString();
         addTitleText = addTitle.getText().toString();
         addDateText = addDate.getText().toString();
+        addCalendarItem();
         TODO newTodo;
-        newTodo = new TODO(addTitleText, addDescriptionText, addDateText, addTimeText);
+        newTodo = new TODO(addTitleText, addDescriptionText, addDateText, addTimeText, userID);
         TODOListDAO.insert(newTodo);
         Toast.makeText(getApplicationContext(), addTitleText + " ADDED TO TODO LIST", Toast.LENGTH_SHORT).show();
         Toast.makeText(getApplicationContext(), "USERID: " + userID, Toast.LENGTH_LONG).show();
@@ -129,6 +132,23 @@ public class AddTODO extends AppCompatActivity {
         }
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(USER_ID_KEY, userID);
+    }
+
+    private void addCalendarItem(){
+        calendarItemsList = TODOListDAO.getUserCalendarItems(userID);
+        if(calendarItemsList.size() == 0){
+            CalendarItems calendarItems = new CalendarItems(1, userID);
+            TODOListDAO.insert(calendarItems);
+        }else{
+            CalendarItems newCal = calendarItemsList.get(calendarItemsList.size()-1);
+            if(newCal.getCalendarItemsSize() != 0){
+                Integer i = newCal.addingTODO();
+                CalendarItems addCal = new CalendarItems(i,userID);
+                TODOListDAO.insert(addCal);
+            }
+        }
+
+
     }
 
 }

@@ -12,23 +12,36 @@
         android:textSize="32sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Check TODOs"
+        android:text="@string/check_todos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/listOfItems"
+        android:id="@+id/calendarItemsList"
         android:layout_width="236dp"
         android:layout_height="129dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="35dp"
         android:gravity="center"
-        android:text="TODO LIST"
+        android:text="@string/calendar_items_size"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkTODOs" />
+
+    <TextView
+        android:id="@+id/listOfItems"
+        android:layout_width="236dp"
+        android:layout_height="129dp"
+        android:layout_marginTop="35dp"
+        android:gravity="center"
+        android:text="@string/todo_list_CAPS"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarItemsList" />
 
     <Button
         android:id="@+id/goBack"

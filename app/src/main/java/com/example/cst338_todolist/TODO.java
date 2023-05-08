@@ -14,11 +14,22 @@ public class TODO {
     private String todoDate;
     private String todoTime;
 
-    public TODO(String todoTitle, String todoDescription, String todoDate, String todoTime) {
+    private Integer todoID;
+
+    public TODO(String todoTitle, String todoDescription, String todoDate, String todoTime, Integer todoID) {
         this.todoTitle = todoTitle;
         this.todoDescription = todoDescription;
         this.todoDate = todoDate;
         this.todoTime = todoTime;
+        this.todoID = todoID;
+    }
+
+    public Integer getTodoID() {
+        return todoID;
+    }
+
+    public void setTodoID(Integer todoID) {
+        this.todoID = todoID;
     }
 
     @Override

@@ -27,11 +27,17 @@ public class Calendar extends AppCompatActivity {
     private int userID = -1;
 
     TextView checkTODOTitle;
+
+    TextView calendarItemsSize;
     TextView listOfTODOs;
 
     Button goBack;
 
     List<TODO> TODOList;
+
+    List<CalendarItems> calendarItemsList;
+
+    CalendarItems calendarItems;
 
     TODOListDAO TODOListDAO;
 
@@ -57,12 +63,15 @@ public class Calendar extends AppCompatActivity {
         listOfTODOs = binding.listOfItems;
         checkTODOTitle = binding.checkTODOs;
         goBack = binding.goBack;
+        calendarItemsSize = binding.calendarItemsList;
 
 
         user = TODOListDAO.getUserByUserID(userID);
 
         listOfTODOs.setMovementMethod(new ScrollingMovementMethod());
+        displayCalendarSize();
         showTodoList();
+
 
 
         goBack.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +91,11 @@ public class Calendar extends AppCompatActivity {
 
     private void showTodoList(){
         StringBuilder sb = new StringBuilder();
-        TODOList = TODOListDAO.getAllTODOs();
+        if(user.getAdmin().equals("no")){
+            TODOList = TODOListDAO.getUserTODOItems(userID);
+        }else{
+            TODOList = TODOListDAO.getAllTODOs();
+        }
         if(!TODOList.isEmpty()){
             for(int i = 0; i < TODOList.size(); i++){
                 TODO todo = TODOList.get(i);
@@ -122,6 +135,20 @@ public class Calendar extends AppCompatActivity {
         if (users.size() <= 0) {
             User predefinedUser = new User("seche", "seche123", "no");
             TODOListDAO.insert(predefinedUser);
+        }
+    }
+
+
+    private void displayCalendarSize(){
+        List<CalendarItems> adminList = TODOListDAO.getAllCalendarItems();
+        if(user.getAdmin().equals("no")){
+            calendarItemsList = TODOListDAO.getUserCalendarItems(userID);
+            calendarItems = calendarItemsList.get(calendarItemsList.size()-1);
+            calendarItemsSize.setText(calendarItems.toString());
+        }else{
+            Integer size = adminList.size();
+            String newString = size.toString();
+            calendarItemsSize.setText(newString);
         }
     }
 }

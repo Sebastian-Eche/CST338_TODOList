@@ -6,11 +6,12 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.cst338_todolist.CalendarItems;
 import com.example.cst338_todolist.TODO;
 import com.example.cst338_todolist.User;
 
 
-@Database(entities = {User.class, TODO.class}, version = 2)
+@Database(entities = {User.class, TODO.class, CalendarItems.class}, version = 3)
 public abstract class AppDataBase extends RoomDatabase {
 
     public static final String DATABASE_NAME = "TODOList.db";
@@ -18,6 +19,8 @@ public abstract class AppDataBase extends RoomDatabase {
     public static final String LOGIN_TABLE = "login_table";
 
     public static final String TODO_TABLE = "todo_table";
+
+    public static final String CALENDAR_ITEMS_TABLE = "calendarItems_table";
 
     private static volatile AppDataBase instance;
 
