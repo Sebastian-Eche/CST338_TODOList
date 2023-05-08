@@ -116,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
 
         List<User> users = TODOListDAO.getAllUsers();
         if(users.size() <= 0){
-            User predefinedUser = new User("seche", "seche123");
+            User predefinedUser = new User("seche", "seche123", "no");
             TODOListDAO.insert(predefinedUser);
         }
 

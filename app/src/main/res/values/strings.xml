@@ -10,4 +10,24 @@
     <string name="login">LOGIN</string>
     <string name="add">ADD</string>
     <string name="remove">REMOVE</string>
+    <string name="log_out">LOG OUT</string>
+    <string name="create_a_username">Create a Username</string>
+    <string name="create_a_password">Create a Password</string>
+    <string name="retype_password">Retype Password</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="add_todo">Add Todo</string>
+    <string name="title_of_todo">Title of Todo</string>
+    <string name="date_of_todo">Date of Todo</string>
+    <string name="time_to_do_todo">Time to do Todo</string>
+    <string name="description">Description</string>
+    <string name="remove_todo">REMOVE TODO</string>
+    <string name="remove_by_title">Remove by Title</string>
+    <string name="remove_todo_ALLCAPS">REMOVE TODO</string>
+    <string name="remove_user">REMOVE USER</string>
+    <string name="check_database">CHECK DATABASE</string>
+    <string name="delete_user">DELETE USER</string>
+    <string name="user_list">USER LIST</string>
+    <string name="remove_by_username">REMOVE BY USERNAME</string>
+    <string name="calendar">CALENDAR</string>
+    <string name="go_back">GO BACK</string>
 </resources>
